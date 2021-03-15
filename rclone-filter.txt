@@ -1,0 +1,7 @@
+- .git/
+- .idea/
+- .ropeproject/
+- *.exe
+- *.dll
+- *.so
+- *.o

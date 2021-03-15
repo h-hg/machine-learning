@@ -1,0 +1,19 @@
+- [符号](symbol.md)
+- NumPy
+- Tensorflow
+- PyTorch
+- 数学
+  - [向量](math/vector.md)
+  - [矩阵](math/matrix.md)
+  - [广播](math/broadcast.md)
+  - [范数](math/norm.md)
+  - [求导](math/derivation.md)
+- [损失函数](loss-fcuntion.md)
+- [优化器](optimizer/index.md)
+- [激活函数](activation/index.md)
+- [传播](propagation/index.md)
+- [线性回归](linear-regression/index.md)
+- [逻辑回归](logistic-regression/index.md)
+- [支持向量机](svm/index.md)
+- [感知机](mlp/index.md)
+- [卷积网络](cnn/index.md)
