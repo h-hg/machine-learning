@@ -17,7 +17,7 @@ $\mathrm{d} f = f'(x) \mathrm{d} x = \cfrac{\mathrm{d} f}{\mathrm{d} x} \mathrm{
 定义：
 
 $$
-\cfrac{\partial f}{\partial \boldsymbol{x}} = (\cfrac{\partial f}{\partial x_i}, \dots, \cfrac{\partial f}{\partial x_n})^\mathrm{T} =
+\cfrac{\partial f}{\partial \boldsymbol{x}} = \left[\cfrac{\partial f}{\partial x_i}, \dots, \cfrac{\partial f}{\partial x_n}\right]^\mathrm{T} =
 \begin{bmatrix}
     \cfrac{\partial f}{\partial x_i} \\
     \vdots \\
