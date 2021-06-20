@@ -32,8 +32,8 @@ b = a[::-2] # [9 7 5 3 1]
 NumPy 和 PyTorch 可以直接使用整数索引，但是 TensorFlow 不可以。
 
 ||NumPy|PyTorch|TensorFlow|
-||x|`torch.gather`|`tf.gather`|
-||x|x|`tf.gather_nd`|
+||`np.take`|`torch.gather`|`tf.gather`|
+||`np.take`|x|`tf.gather_nd`|
 
 - `tf.gather`
 - `tf.gather_nd`：`nd` 表示 n dimension，即多维

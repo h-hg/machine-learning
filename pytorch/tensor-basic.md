@@ -4,7 +4,7 @@
 
 ## 属性
 
-|描述|numpy|PyTorch|TensorFlow|
+|描述|NumPy|PyTorch|TensorFlow|
 |:-:|:-:|:-:|:-:|
 ||`.dtype`|`.dtype`|`.dtype`|
 ||`.ndim`|`.ndim`|`.ndim`|
@@ -13,11 +13,11 @@
 
 ## 创建
 
-|描述|numpy|PyTorch|TensorFlow|
+|描述|NumPy|PyTorch|TensorFlow|
 |:-:|:-:|:-:|:-:|
 ||`np.array`|`torch.tensor`|`tf.constant`|
 
-||numpy|PyTorch|TensorFlow|
+||NumPy|PyTorch|TensorFlow|
 |:-:|:-:|:-:|:-:|
 ||`np.zeros`|`torch.zeros`|`tf.zeros`|
 ||`np.zeros_like`|`torch.zeros_like`|`tf.zeros_like`|
@@ -25,14 +25,14 @@
 ||`np.ones_like`|`torch.ones_like`|`tf.ones_like`|
 ||`np.empty`|`torch.empty`||
 
-||numpy|PyTorch|TensorFlow|
+||NumPy|PyTorch|TensorFlow|
 |:-:|:-:|:-:|:-:|
 ||`np.arange`|`torch.arange`, `torch.range`|`tf.range`|
 ||`np.linspace`|`torch.linspace`|`tf.linspace`|
 ||`np.logspace`|`torch.logspace`|`tf.logspace`|
 ||`np.full`|`torch.full`|`tf.fill`|
 
-||numpy|PyTorch|TensorFlow|
+||NumPy|PyTorch|TensorFlow|
 |:-:|:-:|:-:|:-:|
 |[0, 1] 均匀分布|`np.random.rand`|`torch.rand`|`tf.random.uniform`|
 |标准正态分布 N(0, 1)|`np.random.randn`|`torch.randn`|`tf.random.normal`|
@@ -40,7 +40,7 @@
 
 ## NumPy 兼容
 
-||numpy|PyTorch|TensorFlow|
+||NumPy|PyTorch|TensorFlow|
 |:-:|:-:|:-:|:-:|
 |from `np.array`|-|`.numpy()`|`.numpy()`|
 |to `np.array`|-|`torch.from_numpy`|`tf.convert_to_tensor`|
