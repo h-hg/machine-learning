@@ -46,7 +46,6 @@ a.permute(0, 2, 3, 1)  # (5, 7, 8, 6)
 ||`.squeeze`, `np.squeeze`|`.squeeze`, `torch.squeeze`|`tf.squeeze`|
 ||`.expand_dims`, `np.expand_dims`|`.unsqueeze`, `torch.unsqueeze`|`tf.expand_dims`|
 
-
 ```python
 a.shape                     # (1, 2, 1, 1, 3)
 torch.squeeze(a)            # (2, 3)

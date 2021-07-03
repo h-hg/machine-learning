@@ -83,10 +83,21 @@ def back_grad(self, X, y):
 1. 在使用 $\| \hat{\mathbf{X}} \boldsymbol{w} + b - \boldsymbol{y} \|$ 作为损失函数时出现了，数据溢出的现象（待探究）。
 2. 如果 $\mathbf{X}$ 没有标准化（归一化处理），出现了奇怪的曲线。
 
-
 ### tensorflow
 
 ### pytorch
+
+低级 API
+
+[](torch-low.py ':include :type=code python')
+
+中阶 API
+
+[](torch-mid.py ':include :type=code python')
+
+这里还遇到了一种更奇怪的实现，直接使用乘法，而不是矩阵乘法
+
+[](torch-mid2.py ':include :type=code python')
 
 ## 最小二乘法法
 

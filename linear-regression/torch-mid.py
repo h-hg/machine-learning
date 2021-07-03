@@ -8,17 +8,12 @@ class LinearRegression(torch.nn.Module):
         super().__init__()
         self.params = torch.nn.ParameterDict({
             'w': torch.nn.Parameter(torch.zeros(in_features, out_features)),
-            'b': torch.nn.Parameter(torch.zeros(1))
+            'b': torch.nn.Parameter(torch.zeros(out_features))
         })
     def forward(self, x):
         return x @ self.params['w'] + self.params['b']
 
-if __name__ == '__main__':
-    net = LinearRegression(10, 1)
-    for a in net.parameters():
-        print(a)
-    # print(net.parameters())
-if __name__ == "__main2__":
+if __name__ == "__main__":
     # load data
     X,y = sklearn.datasets.load_boston(return_X_y=True)
     
@@ -73,3 +68,4 @@ if __name__ == "__main2__":
     plt.ylabel("Loss")
     plt.legend(loc='upper right')
     plt.show()
+    print(losses[-1])

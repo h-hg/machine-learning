@@ -3,6 +3,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sklearn.datasets
 
+class LinearRegression(torch.nn.Module):
+    def __init__(self, in_features, out_features):
+        super().__init__()
+        self.params = torch.nn.ParameterDict({
+            'w': torch.nn.Parameter(torch.zeros(out_features, in_features)),
+            'b': torch.nn.Parameter(torch.zeros(out_features))
+        })
+    def forward(self, x):
+        batch_size = x.shape[0]
+        return (x.view(x.shape[0], 1, x.shape[1]) * self.params['w']).sum(dim=-1) + self.params['b']
+
 if __name__ == "__main__":
     # load data
     X,y = sklearn.datasets.load_boston(return_X_y=True)
@@ -27,33 +38,28 @@ if __name__ == "__main__":
     dl_valid = torch.utils.data.DataLoader(ds_valid, batch_size=100)
 
     # parameters
-    w = torch.zeros([X.shape[1], 1], requires_grad=True)
-    b = torch.zeros(1, requires_grad=True)
+    net = LinearRegression(X.shape[1], 1)
     lr = torch.tensor(0.05)
     losses = []
 
     # train
     epoch = 100
+    optimizer = torch.optim.SGD(net.parameters(), lr=lr)
+    loss_func = torch.nn.MSELoss()
     for i in range(epoch):
         for features, labels in dl_train:
             # forward
-            y_pred = features @ w + b
-            loss = torch.mean((y_pred - labels) ** 2)
+            y_pred = net(features)
+            loss = loss_func(y_pred, labels)
             
             # backward
             loss.backward()
-
-            with torch.no_grad():
-                # update parameters
-                w -= lr * w.grad
-                b -= lr * b.grad
-
-                # clean grad
-                w.grad.zero_()
-                b.grad.zero_()
-
-                # record loss value
-                losses.append(loss.item())
+            # update parameters
+            optimizer.step()
+            # clean grad
+            optimizer.zero_grad()
+            # record loss value
+            losses.append(loss.item())
     # draw
     plt.figure()
     plt.plot(range(len(losses)), losses, color = 'red',label='Train')
@@ -63,8 +69,4 @@ if __name__ == "__main__":
     plt.ylabel("Loss")
     plt.legend(loc='upper right')
     plt.show()
-    print(losses[-1])
-    # 这里还没有加入测试代码，一般来说，测试代码有几种情况
-    # 1. test once per serval batch
-    # 2. test onece per epoch
-    # 3. epoch VS step
+    print(losses[-3:-1])

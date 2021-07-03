@@ -2,6 +2,8 @@
 
 这是本人在学习机器学习时所写的笔记，计划在未来两年内完成基本的知识。若有错误之处，麻烦指出。
 
+网页更新慢，直接查看[仓库](https://github.com/h-hg/machine-learning.git)
+
 ## 参考资料
 
 - [AI 算法工程师手册 - 华校专](http://www.huaxiaozhuan.com/)
