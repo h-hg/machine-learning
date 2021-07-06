@@ -64,9 +64,88 @@ $$
 
 ### Numpy
 
+我们需要实现一个全连接的激活为ReLU的网络，它只有一个隐层，没有bias，用于回归预测一个值，loss是计算实际值和预测值的欧氏距离。这里完全使用numpy手动的进行前向和后向计算。numpy数组就是一个n维的数值，它并不知道任何关于深度学习、梯度下降或者计算图的东西，它只是进行数值运算。
+
+```python
+import numpy as np
+
+# N是batch size；D_in是输入大小
+# H是隐层的大小；D_out是输出大小。
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 随机产生输入与输出
+x = np.random.randn(N, D_in)
+y = np.random.randn(N, D_out)
+
+# 随机初始化参数
+w1 = np.random.randn(D_in, H)
+w2 = np.random.randn(H, D_out)
+
+learning_rate = 1e-6
+for t in range(500):
+	# 前向计算y
+	h = x.dot(w1)
+	h_relu = np.maximum(h, 0)
+	y_pred = h_relu.dot(w2)
+	
+	# 计算loss
+	loss = np.square(y_pred - y).sum()
+	print(t, loss)
+	
+	# 反向计算梯度 
+	grad_y_pred = 2.0 * (y_pred - y)
+	grad_w2 = h_relu.T.dot(grad_y_pred)
+	grad_h_relu = grad_y_pred.dot(w2.T)
+	grad_h = grad_h_relu.copy()
+	grad_h[h < 0] = 0
+	grad_w1 = x.T.dot(grad_h)
+	
+	# 更新参数
+	w1 -= learning_rate * grad_w1
+	w2 -= learning_rate * grad_w2
+```
+
 ### Tensorflow
 
 ### Pytorch
+
+和前面一样，我们还是实现一个全连接的Relu激活的网络，它只有一个隐层并且没有bias。loss是预测与真实值的欧氏距离。之前我们用Numpy实现，自己手动前向计算loss，反向计算梯度。这里还是一样，只不过把numpy数组换成了PyTorch的Tensor。但是使用PyTorch的好处是我们可以利用GPU来加速计算，如果想用GPU计算，我们值需要在创建tensor的时候指定device为gpu。
+
+```python
+import torch
+
+
+dtype = torch.float
+device = torch.device("cpu")
+# device = torch.device("cuda:0") # 如果想在GPU上运算，把这行注释掉。
+
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+x = torch.randn(N, D_in, device=device, dtype=dtype)
+y = torch.randn(N, D_out, device=device, dtype=dtype)
+
+w1 = torch.randn(D_in, H, device=device, dtype=dtype)
+w2 = torch.randn(H, D_out, device=device, dtype=dtype)
+
+learning_rate = 1e-6
+for t in range(500): 
+	h = x.mm(w1)
+	h_relu = h.clamp(min=0) # 使用clamp(min=0)来实现ReLU
+	y_pred = h_relu.mm(w2)
+	
+	loss = (y_pred - y).pow(2).sum().item()
+	print(t, loss)
+	
+	grad_y_pred = 2.0 * (y_pred - y)
+	grad_w2 = h_relu.t().mm(grad_y_pred)
+	grad_h_relu = grad_y_pred.mm(w2.t())
+	grad_h = grad_h_relu.clone()
+	grad_h[h < 0] = 0
+	grad_w1 = x.t().mm(grad_h)
+	
+	w1 -= learning_rate * grad_w1
+	w2 -= learning_rate * grad_w2
+```
 
 ## 参考资料
 

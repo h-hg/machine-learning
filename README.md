@@ -18,6 +18,7 @@
 - [深度学习500问](https://scutan90.github.io/DeepLearning-500-questions/)
 - [神经网络与深度学习 - 邱锡鹏](https://nndl.github.io/)
 - [机器学习原理](https://github.com/shunliz/Machine-Learning)
+- [深度学习理论与实战：提高篇](http://fancyerii.github.io/2019/03/14/dl-book/)
 
 tensorflow
 
@@ -30,7 +31,6 @@ pytorch
 
 - [《20天吃掉那只Pytorch》](https://lyhue1991.github.io/eat_pytorch_in_20_days)
 
-![括号](https://www.runoob.com/wp-content/uploads/2019/03/A042DF30-C232-46F3-8436-7D6C35351BBD.jpg "alsfsdf")
 代码实现：
 
 - [fengdu78/lihang code](https://github.com/fengdu78/lihang-code)

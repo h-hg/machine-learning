@@ -145,3 +145,10 @@ a1, a2 = torch.split(a, [1, 2], axis=0)
 a1.shape                      # (1, 35, 8)
 a2.shape                      # (2, 35, 8)
 ```
+
+## 复制
+
+||NumPy|PyTorch|TensorFlow|
+|:-:|:-:|:-:|:-:|
+||`np.repeat`|`torch.repeat_interleave`||
+||`np.tile`|`torch.tile`||

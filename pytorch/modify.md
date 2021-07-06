@@ -192,3 +192,5 @@ drop_last=False 时保留最后一个小于 batch 的批次
 
 5-3 介绍了优化器的使用方法
 
+## Parameter
+https://discuss.pytorch.org/t/how-to-assign-an-arbitrary-tensor-to-models-parameter/44082/4

@@ -18,3 +18,4 @@
 - [支持向量机](svm/index.md)
 - [感知机](mlp/index.md)
 - [卷积网络](cnn/index.md)
+- [径向基神经网络](radial-basis-function-network/index.md)
